@@ -12,12 +12,10 @@ pnpm-lock.yaml
 .env.local
 .env.*.local
 
-# Vite build output
-dist/
-
 # Log files
 *.log
 logs/
 
 # TypeScript build artifacts
 *.tsbuildinfo
+
