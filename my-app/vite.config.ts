@@ -10,5 +10,8 @@ export default defineConfig({
       },
     }),
   ],
+   optimizeDeps: {
+    include: ['jquery', 'pagepiling.js']
+  },
   base: "/portfolio-project/",
 })

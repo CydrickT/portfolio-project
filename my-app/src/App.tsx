@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useRef } from 'react';
+import $ from 'jquery';
+import 'pagepiling.js/dist/jquery.pagepiling.css';
+import 'pagepiling.js';
 
-function App() {
-  const [count, setCount] = useState(0)
+const PagePiling = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    // Initialize pagePiling once the component is mounted
+    $(containerRef.current).pagepiling({
+      // your pagePiling options here
+      sectionSelector: '.section',
+      anchors: ['first', 'second', 'third'],
+      navigation: {
+        position: 'right',
+        tooltips: ['First', 'Second', 'Third']
+      }
+      // ...other options
+    });
+
+    return () => {
+      // Clean up: destroy pagePiling when component unmounts
+      $.fn.pagepiling.destroy('all');
+    };
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div id="pagepiling" ref={containerRef}>
+      <div className="section">Section 1</div>
+      <div className="section">Section 2</div>
+      <div className="section">Section 3</div>
+    </div>
+  );
+};
 
-export default App
+export default PagePiling;

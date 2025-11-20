@@ -10,11 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "jquery": "^3.7.1",
+    "pagepiling.js": "^1.5.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@types/jquery": "^3.5.33",
     "@types/node": "^24.10.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
